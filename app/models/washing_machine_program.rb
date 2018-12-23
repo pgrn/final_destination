@@ -15,5 +15,4 @@
 
 class WashingMachineProgram < ApplicationRecord
   belongs_to :space
-  has_many :calendar_wms_entries
 end

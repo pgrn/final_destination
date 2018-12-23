@@ -23,9 +23,6 @@ class CalendarEntry < ApplicationRecord
 
   belongs_to :owner, class_name: 'User', foreign_key: :owner_id, optional: true
   
-  belongs_to :calendar_entry_type
-  
   validates :calendar, presence: true
   validates :time, presence: true
-  validates :calendar_entry_type, presence: true
 end

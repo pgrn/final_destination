@@ -8,13 +8,6 @@
 
 # GLOBAL OBJECTS
 
-["user defined", "cleaning", "washing machine sharing", "gathering"].each do |cet|
-  CalendarEntryType.create!(
-    value: cet
-  )
-end
-
-
 # SAMPLE THINGS
 
 # Sample users
@@ -67,44 +60,26 @@ u.spaces.first.calendars << Calendar.new(
 u.spaces.first.calendars.first.calendar_entries << CalendarEntry.new(
   name: "clean the room",
   location: "Room 1",
-  time: DateTime.now,
-  calendar_entry_type: CalendarEntryType.find_by(value: "user defined"),
-  custom_entry_type: "cleaning while drinking"
+  time: DateTime.now
 )
 
 u.spaces.first.calendars.first.calendar_entries << CalendarEntry.new(
   name: "clean another room",
   location: "Room 2",
   time: DateTime.now,
-  owner: u2,
-  calendar_entry_type: CalendarEntryType.find_by(value: "user defined"),
-  custom_entry_type: "cleaning while drinking even more"
+  owner: u2 # so that there's at least one event owned by someone
 )
 
 u.spaces.first.calendars.first.calendar_entries << CalendarEntry.new(
   name: "gather and party",
   location: "Room 2",
-  time: DateTime.now,
-  calendar_entry_type: CalendarEntryType.find_by(value: "gathering")
+  time: DateTime.now
 )
 
 u.spaces.first.calendars.first.calendar_entries << CalendarEntry.new(
   name: "washing white clothes",
   location: "Room 1",
-  time: DateTime.now,
-  calendar_entry_type: CalendarEntryType.find_by(value: "washing machine sharing")
-)
-
-test_wms = u.spaces.first.calendars.first.calendar_entries.last
-
-# if it's washing machine sharing, it should have its CalendarWmsEntry
-
-CalendarWmsEntry.create!(
-  calendar_entry: test_wms,
-  washing_machine_program: u.spaces.first.washing_machine_programs.first,
-  fullness: 50,
-  content: "mostly white clothes",
-  extra_info: nil
+  time: DateTime.now
 )
 
 # making the user participate in all events 

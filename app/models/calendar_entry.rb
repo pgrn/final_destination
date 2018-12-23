@@ -15,6 +15,8 @@
 #
 
 class CalendarEntry < ApplicationRecord
+  include Squint
+  
   belongs_to :calendar
 
   belongs_to :owner, class_name: 'User', foreign_key: :owner_id, optional: true

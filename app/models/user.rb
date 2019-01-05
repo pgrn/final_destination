@@ -29,6 +29,7 @@ class User < ApplicationRecord
 
   has_many :calendar_entry_participations, dependent: :destroy
   has_many :calendar_entries, through: :calendar_entry_participations
+  has_many :calendar_entries_created, class_name: 'CalendarEntry', foreign_key: :owner_id
 
   has_many :kudos_given, class_name: 'Kudos', foreign_key: :kudoer_id
   has_many :kudos_received, class_name: 'Kudos', foreign_key: :kudoee_id

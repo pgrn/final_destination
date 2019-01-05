@@ -11,7 +11,11 @@
 #
 
 class Space < ApplicationRecord
+  extend FriendlyId
+  friendly_id :short_name, use: :slugged
+
   validates :name, presence: true
+  validates :short_name, presence: true, uniqueness: true
 
   has_many :subscriptions, dependent: :destroy
   has_many :users, through: :subscriptions

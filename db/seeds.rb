@@ -11,7 +11,7 @@
 # SAMPLE THINGS
 
 # Sample users
-u = User.create(
+u = User.create!(
   username: "tester",
   name: "Tester T.",
   location: "Test City",
@@ -19,7 +19,7 @@ u = User.create(
   password: "testtesttest"
 )
 
-u2 = User.create(
+u2 = User.create!(
   username: "tfriend",
   name: "Nakamura T.",
   location: "Test City",
@@ -31,6 +31,7 @@ u2 = User.create(
 u.spaces << Space.new(
   name: "test space",
   description: "you test stuff here",
+  short_name: "tspace",
   location: "Test City"
 )
 

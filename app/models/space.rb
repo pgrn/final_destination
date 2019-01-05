@@ -24,4 +24,6 @@ class Space < ApplicationRecord
   has_many :washing_machine_programs, dependent: :destroy
 
   has_many :kudos, dependent: :destroy
+
+  has_many :saved_places, dependent: :destroy
 end

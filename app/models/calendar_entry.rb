@@ -2,18 +2,16 @@
 #
 # Table name: calendar_entries
 #
-#  id                     :bigint(8)        not null, primary key
-#  name                   :text             not null
-#  description            :text
-#  location               :text
-#  time                   :datetime         not null
-#  owner_id               :bigint(8)
-#  calendar_id            :bigint(8)        not null
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  custom_entry_type      :string
-#  calendar_entry_type_id :bigint(8)        not null
-#  entry_data             :jsonb            not null
+#  id          :bigint(8)        not null, primary key
+#  name        :text             not null
+#  description :text
+#  location    :text
+#  time        :datetime         not null
+#  owner_id    :bigint(8)
+#  calendar_id :bigint(8)        not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  entry_data  :jsonb            not null
 #
 
 class CalendarEntry < ApplicationRecord

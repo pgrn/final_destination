@@ -34,4 +34,6 @@ class User < ApplicationRecord
   has_many :kudos_given, class_name: 'Kudos', foreign_key: :kudoer_id
   has_many :kudos_received, class_name: 'Kudos', foreign_key: :kudoee_id
 
+  has_many :saved_places_created, class_name: 'SavedPlace', foreign_key: :owner_id
+
 end

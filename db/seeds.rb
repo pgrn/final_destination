@@ -107,5 +107,9 @@ u.spaces.first.rulesets.find(2).rules << Rule.new(
   description: "we're being civil here"
 )
 
-
-
+# Creating space's saved places
+u.spaces.first.saved_places << SavedPlace.new(
+  name: "Ye Olde Bakery",
+  description: "Get the best bread here!",
+  owner: u
+)

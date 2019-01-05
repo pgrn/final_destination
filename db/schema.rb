@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_23_171506) do
+ActiveRecord::Schema.define(version: 2019_01_05_195725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 2018_12_23_171506) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_calendars_on_space_id"
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "kudos", force: :cascade do |t|
@@ -103,6 +114,10 @@ ActiveRecord::Schema.define(version: 2018_12_23_171506) do
     t.text "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.string "short_name", null: false
+    t.index ["short_name"], name: "index_spaces_on_short_name", unique: true
+    t.index ["slug"], name: "index_spaces_on_slug", unique: true
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -125,8 +140,11 @@ ActiveRecord::Schema.define(version: 2018_12_23_171506) do
     t.string "username", null: false
     t.string "name"
     t.text "location"
+    t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   create_table "washing_machine_programs", force: :cascade do |t|

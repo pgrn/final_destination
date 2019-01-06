@@ -1,5 +1,20 @@
 <div class="container">
-  <h1 class="display-4"><%= @space.name %></h1>
-  <h5 class="text-muted"><%= @space.description %></small>
-</div>
+  <div class="container">
+    <h1 class="display-4"><%= @space.name %></h1>
+    <h5 class=""><%= @space.description %></h5>
+    <p>
+      <a href=<%= edit_space_path %> class="text-muted">edit</a>
+    </p>
+    <hr>
+  </div>
 
+  <div class="container">
+    <div class="row">
+      <% ["calendars", "rulesets", "kudos"].each do |card| %>
+        <div class="col-sm">
+          <%= render partial: "spaces/partials/show/#{card}" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

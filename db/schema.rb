@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_05_195725) do
+ActiveRecord::Schema.define(version: 2019_01_06_210109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,14 @@ ActiveRecord::Schema.define(version: 2019_01_05_195725) do
     t.text "name", null: false
     t.text "description"
     t.text "location"
-    t.datetime "time", null: false
+    t.datetime "start_time", null: false
     t.bigint "owner_id"
     t.bigint "calendar_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "entry_data", default: "{}", null: false
+    t.datetime "end_time"
+    t.boolean "all_day", default: false, null: false
     t.index ["calendar_id"], name: "index_calendar_entries_on_calendar_id"
     t.index ["entry_data"], name: "index_calendar_entries_on_entry_data", using: :gin
     t.index ["owner_id"], name: "index_calendar_entries_on_owner_id"

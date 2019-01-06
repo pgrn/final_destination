@@ -61,26 +61,30 @@ u.spaces.first.calendars << Calendar.new(
 u.spaces.first.calendars.first.calendar_entries << CalendarEntry.new(
   name: "clean the room",
   location: "Room 1",
-  time: DateTime.now
+  start_time: DateTime.now,
+  all_day: true
 )
 
 u.spaces.first.calendars.first.calendar_entries << CalendarEntry.new(
   name: "clean another room",
   location: "Room 2",
-  time: DateTime.now,
-  owner: u2 # so that there's at least one event owned by someone
+  start_time: DateTime.now,
+  owner: u2, # so that there's at least one event owned by someone
+  all_day: true
 )
 
 u.spaces.first.calendars.first.calendar_entries << CalendarEntry.new(
   name: "gather and party",
   location: "Room 2",
-  time: DateTime.now
+  start_time: DateTime.now,
+  all_day: true
 )
 
 u.spaces.first.calendars.first.calendar_entries << CalendarEntry.new(
   name: "washing white clothes",
   location: "Room 1",
-  time: DateTime.now
+  start_time: DateTime.now,
+  all_day: true
 )
 
 # making the user participate in all events 

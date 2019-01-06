@@ -176,6 +176,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    simple_form (4.1.0)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -231,6 +234,7 @@ DEPENDENCIES
   rails (~> 5.2.2)
   rails-erd
   sass-rails (~> 5.0)
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   squint

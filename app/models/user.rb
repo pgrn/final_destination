@@ -40,4 +40,7 @@ class User < ApplicationRecord
 
   has_many :saved_places_created, class_name: 'SavedPlace', foreign_key: :owner_id
 
+  def is_member_of?(space)
+    self.spaces.include? space
+  end
 end

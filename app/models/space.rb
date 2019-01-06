@@ -12,7 +12,7 @@
 
 class Space < ApplicationRecord
   extend FriendlyId
-  friendly_id :short_name, use: :slugged
+  friendly_id :short_name, use: :slugged, slug_column: :short_name
 
   validates :name, presence: true
   validates :short_name, presence: true, uniqueness: true

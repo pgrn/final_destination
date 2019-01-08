@@ -6,6 +6,6 @@
     file:           :custom_file,
     boolean:        :custom_boolean_switch
   } do |f| %>
-  <%= f.input :calendars, collection: @space.calendars.order(:name), include_blank: false, include_hidden: false, as: :check_boxes %>
+  <%= f.association :calendars, include_blank: false, include_hidden: false, as: :check_boxes, checked: @currently_selected %>
   <%= f.button :submit, "Display these calendars!", class: "btn-sm btn-primary" %>
 <% end %>

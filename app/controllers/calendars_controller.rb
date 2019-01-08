@@ -4,9 +4,10 @@ class CalendarsController < ApplicationController
 
   def index
     # show all calendars
-    @events = unless params[:space] and !params[:space][:calendar_ids].empty?
+    @events = unless (params.has_key?(:space) ? params[:space].has_key?(:calendar_ids) : false)
       @space.calendar_entries
     else
+      @currently_selected = params[:space][:calendar_ids]
       CalendarEntriesFromCalsQuery.new(@space.calendars).by_calendar_ids(params[:space][:calendar_ids])
     end
     

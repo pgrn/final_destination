@@ -1,13 +1,10 @@
 <div class="container">
-  <%= month_calendar events: @events do |date, events| %>
-    <%= date.day %>
-
-    <% events.each do |event| %>
-        <small><%= event.name %></small>
-        <br>
-    <% end %>
-  <% end %>
-</div>
-
-<%= render partial: "calendars/calendar_selector" %>
+  <div class="row">
+    <div class="col-2">
+      <%= render partial: "calendars/calendar_selector" %>
+    </div>
+    <div class="col">
+      <%= render partial: "calendars/calendar" %>
+    </div>
+  </div>
 </div>

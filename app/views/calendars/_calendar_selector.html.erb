@@ -1,0 +1,11 @@
+<div class="container" id="calendar-selector">
+  <%= simple_form_for @space, url: space_calendars_path, method: :get,
+  wrapper_mappings: {
+    check_boxes:    :vertical_collection,
+    radio_buttons:  :vertical_collection,
+    file:           :custom_file,
+    boolean:        :custom_boolean_switch
+  } do |f| %>
+  <%= f.input :calendars, collection: @space.calendars.order(:name), include_blank: false, include_hidden: false, as: :check_boxes %>
+  <%= f.button :submit, "Display these calendars!", class: "btn-sm btn-primary" %>
+<% end %>

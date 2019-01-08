@@ -19,8 +19,11 @@ class CalendarEntry < ApplicationRecord
   
   belongs_to :calendar
 
+  belongs_to :space
+
   belongs_to :owner, class_name: 'User', foreign_key: :owner_id, optional: true
   
+  validates :space, presence: true
   validates :calendar, presence: true       
   validates :all_day, inclusion: { in: [ true, false ] }
   validate :start_and_end_time_correctness

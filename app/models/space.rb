@@ -21,6 +21,7 @@ class Space < ApplicationRecord
   has_many :users, through: :subscriptions
 
   has_many :calendars, dependent: :destroy
+  has_many :calendar_entries, through: :calendars
 
   has_many :rulesets, dependent: :destroy
   has_many :rules, through: :rulesets

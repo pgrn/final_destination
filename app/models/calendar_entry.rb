@@ -6,12 +6,14 @@
 #  name        :text             not null
 #  description :text
 #  location    :text
-#  time        :datetime         not null
+#  start_time  :datetime         not null
 #  owner_id    :bigint(8)
 #  calendar_id :bigint(8)        not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  entry_data  :jsonb            not null
+#  end_time    :datetime
+#  all_day     :boolean          default(FALSE), not null
 #
 
 class CalendarEntry < ApplicationRecord
@@ -23,6 +25,7 @@ class CalendarEntry < ApplicationRecord
 
   belongs_to :owner, class_name: 'User', foreign_key: :owner_id, optional: true
   
+  validates :name, presence: true
   validates :space, presence: true
   validates :calendar, presence: true       
   validates :all_day, inclusion: { in: [ true, false ] }

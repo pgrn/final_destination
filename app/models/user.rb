@@ -13,6 +13,7 @@
 #  username               :string           not null
 #  name                   :string
 #  location               :text
+#  slug                   :string
 #
 
 class User < ApplicationRecord

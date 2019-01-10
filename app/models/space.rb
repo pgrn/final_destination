@@ -8,6 +8,8 @@
 #  location    :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  slug        :string
+#  short_name  :string           not null
 #
 
 class Space < ApplicationRecord

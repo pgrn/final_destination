@@ -3,7 +3,7 @@
     <div class="col-2">
       <%= render partial: "calendars/calendar_selector" %>
       <br> <!-- oh my god -->
-      <%= link_to 'Create event', new_space_calendar_entry_path,  {remote: true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-sm'}  %>
+      <%= link_to 'Create event', new_space_calendar_entry_path,  { remote: true, 'data-toggle': "modal", 'data-target': '#modal-window', class: 'btn btn-outline-primary btn-sm' }  %>
       <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="calendar-event-modal-label" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content"></div>

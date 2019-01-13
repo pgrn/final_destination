@@ -1,0 +1,5 @@
+<% events.each do |event| %>
+    <small><%= event.start_time.strftime("%H:%M") %></small>
+    <small><%= event.name %></small>
+    <br>
+<% end %>

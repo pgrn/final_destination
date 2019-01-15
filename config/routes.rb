@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   
   resources :spaces, except: [:index] do
     resources :calendars
-    resources :calendar_entries, only: [:new, :create]
+    resources :calendar_entries, only: [:new, :create, :edit, :update]
   end
 end

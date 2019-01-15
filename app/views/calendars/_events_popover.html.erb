@@ -1,5 +1,7 @@
 <% events.each do |event| %>
     <small><%= event.start_time.strftime("%H:%M") %></small>
-    <small><%= event.name %></small>
+    <small>
+      <%= link_to event.name, edit_space_calendar_entry_path(id: event.id), { remote: true, 'data-toggle': "modal", 'data-target': '#modal-window' }  %>
+    </small>
     <br>
 <% end %>

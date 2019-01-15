@@ -3,7 +3,15 @@
   <br>
 
   <% unless events.empty? %>
-    <a tabindex="0" class="badge badge-pill badge-info" role="button" data-toggle="popover" data-trigger="focus" data-placement="top" title="Events for <%= date %>" data-content="<%= render partial: "calendars/events_popover", locals: { events: events } %>" data-html="true"><%= pluralize(events.count, 'event') %></a>
+    <button type="button" data-container="body" class="btn btn-sm btn-info" data-toggle="popover" data-trigger="focus" data-placement="top" title="Events for <%= date %>" data-html="true">
+      <%= pluralize(events.count, 'event') %>
+      <div hidden>
+        <div class="popup-content">
+          <%= render partial: "calendars/events_popover", locals: { events: events } %>
+        </div>
+      </div>
+    </button>
+    
   <% end %>
 
 <% end %>

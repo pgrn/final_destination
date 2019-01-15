@@ -1,9 +1,9 @@
 <div class="modal-header">
-  <h5 class="modal-title" id="new-calendar-entry-modal-label">Create a new calendar event</h5>
+  <h5 class="modal-title" id="edit-calendar-entry-modal-label">Edit a calendar event</h5>
   <button type="button" class="close" data-dismiss="modal">x</button>
 </div>
 <div class="modal-body">
-  <%= simple_form_for @new_ce, url: space_calendar_entries_path, method: :post,
+  <%= simple_form_for @ce, url: space_calendar_entry_path, method: :patch,
     wrapper_mappings: {
       check_boxes:    :vertical_collection,
       radio_buttons:  :vertical_collection,
@@ -15,10 +15,10 @@
     <%= f.input :location %>
     <%= f.input :calendar_id, collection: @space.calendars.order(:name), as: :radio_buttons%>
     <%= f.input :start_time %>
-    <%= f.input :end_time, wrapper_html: { id: 'end-time-input' } %>
+    <%= f.input :end_time , wrapper_html: { id: 'end-time-input' } %>
     <%= f.input :all_day, label: "All day?", input_html: { id: 'all-day-checkbox'  }%>
     <div class="modal-footer">
-      <%= f.button :submit, "Create", class: "btn-sm btn-primary" %>
+      <%= f.button :submit, "Edit", class: "btn-sm btn-primary" %>
     </div>
   <% end %>
 </div>

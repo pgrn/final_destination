@@ -1,3 +1,10 @@
 $(function () {
-  $('[data-toggle="popover"]').popover()
+
+  for (let e of $('[data-toggle="popover"]')) {
+    $(e).popover({
+      html: true,
+      content: e.querySelector('.popup-content')
+    })
+  }
+
 })

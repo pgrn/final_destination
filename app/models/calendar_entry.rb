@@ -26,21 +26,9 @@ class CalendarEntry < ApplicationRecord
   validates :name, presence: true
   validates :calendar, presence: true       
   validates :all_day, inclusion: { in: [ true, false ] }
-  validate :start_and_end_time_correctness
+  validate :end_date_after_start_date?
 
-  def start_and_end_time_correctness
-    if all_day == true
-      unless start_time == end_time or end_time == nil
-        errors.add(:end_time, "must either be nil or equal to start date if the event is all day long")
-      end
-    else
-      if end_time == nil
-        errors.add(:end_time, "cannot be nil if the event's not all day long")
-      else
-        if start_time > end_time
-          errors.add(:start_time, "cannot be a date later than the event's end time")
-        end
-      end
-    end
+  def end_date_after_start_date?
+    errors.add(:end_time, "can't be before the start time") if end_time < start_time
   end
 end

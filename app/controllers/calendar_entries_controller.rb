@@ -1,4 +1,5 @@
 class CalendarEntriesController < ApplicationController
+  respond_to :html, :json
   before_action :authenticate_user!
   before_action :set_space, only: [:new, :create, :edit, :update]
 
@@ -9,13 +10,14 @@ class CalendarEntriesController < ApplicationController
   def create
     @new_ce = CalendarEntry.new(new_calendar_entry_params.merge({ owner: current_user }))
 
-    if @new_ce.save
-      # TODO
-      flash[:success] = "Successfully updated!"
-    else
-      # TODO
+    respond_to do |format|
+      if @new_ce.save
+        format.json { render json: @new_ce, status: :created, location: space_calendars_path }
+      else
+        format.json { render json: @new_ce.errors, status: :unprocessable_entity }
+      end
     end
-    
+
   end
 
   def edit
@@ -27,11 +29,12 @@ class CalendarEntriesController < ApplicationController
     # TODO: auth (so that only the event's owner can update)
     @ce = CalendarEntry.find(params[:id])
 
-    if @ce.update(new_calendar_entry_params)
-      # TODO
-      flash[:success] = "Successfully updated!"
-    else
-      # TODO
+    respond_to do |format|
+      if @ce.save
+        format.json { render json: @ce, status: :ok, location: space_calendars_path }
+      else
+        format.json { render json: @ce.errors, status: :unprocessable_entity }
+      end
     end
   end
 

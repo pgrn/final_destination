@@ -1,6 +1,6 @@
 $("#modal-window").find(".modal-content").html("<%= j (render 'edit') %>");
 $("#modal-window").modal();
 
-$("form.edit_calendar_entry").on("submit", function() {
+$("form.edit_calendar_entry").on("ajax:success", function() {
   $("#modal-window").modal("toggle");
 })

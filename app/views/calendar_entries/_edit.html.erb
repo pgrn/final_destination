@@ -3,7 +3,7 @@
   <button type="button" class="close" data-dismiss="modal">x</button>
 </div>
 <div class="modal-body">
-  <%= simple_form_for @ce, url: space_calendar_entry_path, method: :patch,
+  <%= simple_form_for @ce, url: space_calendar_entry_path, method: :patch, remote: true, html: { "data-type" => :json },
     wrapper_mappings: {
       check_boxes:    :vertical_collection,
       radio_buttons:  :vertical_collection,

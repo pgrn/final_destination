@@ -1,11 +1,3 @@
-$(
-  loadPopovers()
-)
-
-$(document).on('turbolinks:load', function() {
-  loadPopovers();
-})
-
 function loadPopovers() {
   for (let e of $('[data-toggle="popover"]')) {
     $(e).popover({
@@ -14,6 +6,18 @@ function loadPopovers() {
     })
   }
 }
+
+$(document).ready(function() {
+  loadPopovers();
+})
+
+$(document).on('turbolinks:load', function() {
+  loadPopovers();
+})
+
+
+
+
 
 
 

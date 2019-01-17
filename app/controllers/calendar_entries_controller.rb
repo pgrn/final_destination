@@ -30,7 +30,7 @@ class CalendarEntriesController < ApplicationController
     @ce = CalendarEntry.find(params[:id])
 
     respond_to do |format|
-      if @ce.save
+      if @ce.update(new_calendar_entry_params)
         format.json { render json: @ce, status: :ok, location: space_calendars_path }
       else
         format.json { render json: @ce.errors, status: :unprocessable_entity }

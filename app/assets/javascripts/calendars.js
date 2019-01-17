@@ -9,15 +9,16 @@ function loadPopovers() {
 
 $(document).ready(function() {
   loadPopovers();
+
+  $('#modal-window').on('shown.bs.modal', function () {
+    $(ClientSideValidations.selectors.forms).validate();
+  });
+
 })
 
 $(document).on('turbolinks:load', function() {
   loadPopovers();
 })
-
-
-
-
 
 
 

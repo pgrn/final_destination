@@ -1,0 +1,12 @@
+<div id="form-entry-wms" style="display:none;">
+  <%= f.simple_fields_for :entry_data_wms, validate: true do |ed_f| %>
+    <% if space.washing_machine_programs.empty? %>
+      <h6 style="color:red;">No washing machine programs created!</h6>
+    <% else %>
+      <%= ed_f.input :washing_machine_program_id, label: "Washing machine sharing program", collection: space.washing_machine_programs, include_blank: false %>
+      <%= ed_f.input :clothes_type, label: "Clothing type", collection: ["White", "Colour", "Mixed"], include_blank: false %> 
+      <%= ed_f.input :wm_percent_full, label: "Percentage of washing machine fullness", collection: (10..100).step(10), include_blank: false %>
+    <% end %>
+  <% end %>
+</div>
+

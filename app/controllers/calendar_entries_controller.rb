@@ -5,10 +5,17 @@ class CalendarEntriesController < ApplicationController
 
   def new
     @new_ce = CalendarEntry.new
+    @new_ce.entry_data = { foo: "" }
   end
 
   def create
     @new_ce = CalendarEntry.new(new_calendar_entry_params.merge({ owner: current_user }))
+    @new_ce.entry_data = case entry_data_selector_params[:type]
+    when "washing machine sharing"
+      { type: "wms", payload: params[:calendar_entry][:entry_data_wms] }
+    else
+      { type: "none", payload: {} }
+    end
 
     respond_to do |format|
       if @new_ce.save
@@ -53,5 +60,13 @@ class CalendarEntriesController < ApplicationController
     date_keys = params.keys.select { |k| k.to_s.match?(date_key.to_s) }.sort
     date_array = params.values_at(*date_keys).map(&:to_i)
     DateTime.civil(*date_array)
+  end
+
+  def entry_data_selector_params
+    params.require(:entry_data_selector).permit(:type)
+  end
+
+  def entry_data_params
+    params.require(:calendar_entry).permit(:entry_data)
   end
 end

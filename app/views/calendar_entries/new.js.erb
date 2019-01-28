@@ -4,3 +4,16 @@ $("#modal-window").modal();
 $("form.new_calendar_entry").on("ajax:success", function() {
   $("#modal-window").modal("toggle");
 })
+
+$('#entry_data_selector_type').change(function() {
+  switch(this.value) {
+    case 'washing machine sharing':
+      $("form.new_calendar_entry #form-entry-wms").show();
+      break;
+    default:
+      ["form.new_calendar_entry #form-entry-wms"].forEach(function(e) {
+        $(e).hide();
+      })
+      break;
+  }
+});

@@ -24,9 +24,10 @@ class CalendarEntry < ApplicationRecord
   belongs_to :owner, class_name: 'User', foreign_key: :owner_id, optional: true
   
   validates :name, presence: true
-  validates :calendar, presence: true       
+  validates :calendar, presence: true
   validates :all_day, inclusion: { in: [ true, false ] }
   validate :end_date_after_start_date?
+  validates_with CalendarEntryPayloadValidator
 
   def end_date_after_start_date?
     errors.add(:end_time, "can't be before the start time") if end_time < start_time

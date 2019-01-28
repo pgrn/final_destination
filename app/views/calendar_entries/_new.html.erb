@@ -11,12 +11,23 @@
       boolean:        :custom_boolean_switch
     } do |f| %>
     <%= f.input :name %>
+    <%= simple_fields_for :entry_data_selector do |n| %>
+      <%= n.input :type, collection: ["none", "washing machine sharing"], include_blank: false %>
+    <% end %>
     <%= f.input :description %>
     <%= f.input :location %>
-    <%= f.input :calendar_id, collection: @space.calendars.order(:name), as: :radio_buttons%>
+    <%= f.input :calendar_id, collection: @space.calendars.order(:name), as: :radio_buttons, required: true %>
     <%= f.input :start_time %>
     <%= f.input :end_time, wrapper_html: { id: 'end-time-input' } %>
     <%= f.input :all_day, label: "All day?", as: :boolean, checked_value: true, unchecked_value: false, input_html: { id: 'all-day-checkbox' }%>
+    <%= render partial: "calendar_entries/form_entry_wms", locals: { space: @space, f: f } %>
+    <div id="form-entry-generic" style="display:none;">
+      <%= f.simple_fields_for :entry_data_generic do |ed_f| %>
+        <% @new_ce.entry_data.each do |k, v| %>
+          <%= ed_f.input k.to_sym %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="modal-footer">
       <%= f.button :submit, "Create", class: "btn-sm btn-primary" %>
     </div>
